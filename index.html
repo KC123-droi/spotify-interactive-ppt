@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Org Dev - Interactive Presentation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="spotify-app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#1DB954" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M8 12a4 4 0 0 1 8 0"></path>
+                </svg>
+                <span>Org Playlist</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <button class="nav-item active" data-section="home">
+                    <span class="icon">🏠</span>
+                    <span>Home</span>
+                </button>
+                <button class="nav-item" data-section="introduction">
+                    <span class="icon">🎵</span>
+                    <span>Introduction</span>
+                </button>
+                <button class="nav-item" data-section="problem">
+                    <span class="icon">⚠️</span>
+                    <span>Problem Identified</span>
+                </button>
+                <button class="nav-item" data-section="intervention">
+                    <span class="icon">🎯</span>
+                    <span>Intervention</span>
+                </button>
+                <button class="nav-item" data-section="evaluation">
+                    <span class="icon">📊</span>
+                    <span>Evaluation & Effect</span>
+                </button>
+                <button class="nav-item" data-section="theory">
+                    <span class="icon">📚</span>
+                    <span>Learning & Theory</span>
+                </button>
+            </nav>
+
+            <div class="gamification-stats">
+                <h4>🎮 Your Score</h4>
+                <div class="score-display">
+                    <span class="points" id="points">0</span>
+                    <span class="points-label">pts</span>
+                </div>
+                <div class="achievements">
+                    <span class="badge" id="badge1">🏆</span>
+                    <span class="badge" id="badge2">⭐</span>
+                    <span class="badge" id="badge3">🔥</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header with Progress -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="hamburger" id="hamburger">☰</button>
+                    <h1 id="section-title">Welcome to the Spotify OD Presentation</h1>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </header>
+
+            <!-- Content Container -->
+            <div class="content-container">
+                
+                <!-- HOME SECTION -->
+                <section id="home" class="section active">
+                    <div class="hero-section">
+                        <div class="hero-content">
+                            <div class="spotify-logo-large">
+                                <svg viewBox="0 0 100 100" width="150" height="150">
+                                    <circle cx="50" cy="50" r="48" fill="none" stroke="#1DB954" stroke-width="2"/>
+                                    <path d="M30 50 Q50 40 70 50" stroke="#1DB954" stroke-width="3" fill="none"/>
+                                    <circle cx="40" cy="50" r="3" fill="#1DB954"/>
+                                    <circle cx="60" cy="50" r="3" fill="#1DB954"/>
+                                </svg>
+                            </div>
+                            <h1>🎵 Organizational Development Through Spotify</h1>
+                            <p>An Interactive Journey into Change Management & Culture</p>
+                            <div class="cta-buttons">
+                                <button class="btn btn-primary" onclick="navigateToSection('introduction')">
+                                    ▶️ Start Presentation
+                                </button>
+                                <button class="btn btn-secondary" onclick="toggleFullscreen()">
+                                    ⛶ Fullscreen
+                                </button>
+                            </div>
+                        </div>
+                        <div class="hero-visual">
+                            <div class="equalizer">
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="playlist-preview">
+                        <h2>📋 Presentation Tracks</h2>
+                        <div class="track-list">
+                            <div class="track" onclick="navigateToSection('introduction')">
+                                <span class="track-num">1</span>
+                                <div class="track-info">
+                                    <div class="track-name">Introduction</div>
+                                    <div class="track-artist">Setting the Stage</div>
+                                </div>
+                                <span class="duration">5:30</span>
+                            </div>
+                            <div class="track" onclick="navigateToSection('problem')">
+                                <span class="track-num">2</span>
+                                <div class="track-info">
+                                    <div class="track-name">Problem Identified</div>
+                                    <div class="track-artist">The Challenge</div>
+                                </div>
+                                <span class="duration">6:45</span>
+                            </div>
+                            <div class="track" onclick="navigateToSection('intervention')">
+                                <span class="track-num">3</span>
+                                <div class="track-info">
+                                    <div class="track-name">Intervention Strategy</div>
+                                    <div class="track-artist">Solution Implementation</div>
+                                </div>
+                                <span class="duration">7:20</span>
+                            </div>
+                            <div class="track" onclick="navigateToSection('evaluation')">
+                                <span class="track-num">4</span>
+                                <div class="track-info">
+                                    <div class="track-name">Evaluation & Results</div>
+                                    <div class="track-artist">Impact Analysis</div>
+                                </div>
+                                <span class="duration">8:15</span>
+                            </div>
+                            <div class="track" onclick="navigateToSection('theory')">
+                                <span class="track-num">5</span>
+                                <div class="track-info">
+                                    <div class="track-name">Learning & Theory</div>
+                                    <div class="track-artist">OD Framework</div>
+                                </div>
+                                <span class="duration">6:50</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- INTRODUCTION SECTION -->
+                <section id="introduction" class="section">
+                    <div class="section-header">
+                        <h2>🎵 Introduction</h2>
+                        <p>Discover the Spotify OD Journey</p>
+                    </div>
+
+                    <div class="interactive-cards">
+                        <div class="card clickable" onclick="expandCard(this, 'intro-1')">
+                            <div class="card-icon">🎤</div>
+                            <h3>The Spotify Story</h3>
+                            <p>Click to explore</p>
+                            <div id="intro-1" class="card-content hidden">
+                                <h4>Spotify's Transformation</h4>
+                                <ul>
+                                    <li>🌍 Founded: 2006 in Sweden</li>
+                                    <li>👥 Employees: 3,000+ across globe</li>
+                                    <li>🎵 Users: 500M+ active users</li>
+                                    <li>🚀 Mission: Make music accessible to everyone</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card clickable" onclick="expandCard(this, 'intro-2')">
+                            <div class="card-icon">🏢</div>
+                            <h3>Organizational Context</h3>
+                            <p>Click to explore</p>
+                            <div id="intro-2" class="card-content hidden">
+                                <h4>Why Spotify?</h4>
+                                <ul>
+                                    <li>📈 Rapid growth phase</li>
+                                    <li>🌐 Distributed teams across continents</li>
+                                    <li>🔄 Need for agile transformation</li>
+                                    <li>💡 Innovation-driven culture required</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card clickable" onclick="expandCard(this, 'intro-3')">
+                            <div class="card-icon">🎯</div>
+                            <h3>Presentation Focus</h3>
+                            <p>Click to explore</p>
+                            <div id="intro-3" class="card-content hidden">
+                                <h4>What We'll Cover</h4>
+                                <ul>
+                                    <li>🔍 Identifying organizational challenges</li>
+                                    <li>💼 Strategic interventions implemented</li>
+                                    <li>📊 Measuring success & impact</li>
+                                    <li>🧠 OD Theory Application</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-element">
+                        <h3>🎧 Quick Quiz: Know Spotify?</h3>
+                        <div class="quiz-container">
+                            <div class="quiz-question">
+                                <p>What year was Spotify founded?</p>
+                                <div class="quiz-options">
+                                    <button class="quiz-btn" onclick="checkQuiz(false)">2005</button>
+                                    <button class="quiz-btn" onclick="checkQuiz(true)">2006</button>
+                                    <button class="quiz-btn" onclick="checkQuiz(false)">2007</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary next-btn" onclick="navigateToSection('problem')">
+                        Next: Problem Identified →
+                    </button>
+                </section>
+
+                <!-- PROBLEM IDENTIFIED SECTION -->
+                <section id="problem" class="section">
+                    <div class="section-header">
+                        <h2>⚠️ Problem Identified</h2>
+                        <p>The Organizational Challenges</p>
+                    </div>
+
+                    <div class="problem-visualizer">
+                        <div class="problem-grid">
+                            <div class="problem-card" onclick="showProblemDetail(this)">
+                                <div class="problem-icon">🔗</div>
+                                <h4>Silos & Fragmentation</h4>
+                                <p>Teams isolated across regions</p>
+                                <div class="problem-detail hidden">
+                                    <strong>The Issue:</strong>
+                                    <p>Different teams in Stockholm, New York, and Singapore operated independently with minimal cross-functional collaboration. This led to:</p>
+                                    <ul>
+                                        <li>Duplicate efforts</li>
+                                        <li>Slow decision-making</li>
+                                        <li>Inconsistent processes</li>
+                                        <li>Knowledge silos</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="problem-card" onclick="showProblemDetail(this)">
+                                <div class="problem-icon">🔄</div>
+                                <h4>Change Resistance</h4>
+                                <p>Employees struggling with rapid changes</p>
+                                <div class="problem-detail hidden">
+                                    <strong>The Issue:</strong>
+                                    <p>As Spotify scaled, the company needed to adapt from startup culture to more structured processes. This caused:</p>
+                                    <ul>
+                                        <li>Employee anxiety</li>
+                                        <li>Reduced engagement</li>
+                                        <li>Turnover increase</li>
+                                        <li>Culture clash</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="problem-card" onclick="showProblemDetail(this)">
+                                <div class="problem-icon">📉</div>
+                                <h4>Declining Innovation</h4>
+                                <p>Project delays and reduced productivity</p>
+                                <div class="problem-detail hidden">
+                                    <strong>The Issue:</strong>
+                                    <p>With growth came bureaucracy, slowing innovation. Metrics showed:</p>
+                                    <ul>
+                                        <li>30% increase in project delivery time</li>
+                                        <li>Fewer new features launched</li>
+                                        <li>Employee satisfaction dropped 25%</li>
+                                        <li>Attrition rate rose to 18%</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="problem-card" onclick="showProblemDetail(this)">
+                                <div class="problem-icon">👥</div>
+                                <h4>Leadership Alignment</h4>
+                                <p>Different visions across departments</p>
+                                <div class="problem-detail hidden">
+                                    <strong>The Issue:</strong>
+                                    <p>Leadership teams had conflicting strategies for growth:</p>
+                                    <ul>
+                                        <li>Product vs. Engineering priorities misaligned</li>
+                                        <li>Unclear organizational direction</li>
+                                        <li>Resource allocation disputes</li>
+                                        <li>Communication breakdowns</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="problem-analysis">
+                        <h3>📊 Impact Assessment</h3>
+                        <div class="metrics-display">
+                            <div class="metric">
+                                <div class="metric-value">-25%</div>
+                                <div class="metric-label">Employee Engagement</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">+18%</div>
+                                <div class="metric-label">Turnover Rate</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">-30%</div>
+                                <div class="metric-label">Project Velocity</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">-35%</div>
+                                <div class="metric-label">Cross-team Collaboration</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="interactive-element">
+                        <h3>🎮 Drag & Match Problem Causes</h3>
+                        <p>Match each problem with its primary cause:</p>
+                        <div class="matching-game" id="matchingGame">
+                            <div class="match-left">
+                                <div class="match-item" draggable="true">Silos</div>
+                                <div class="match-item" draggable="true">Resistance</div>
+                                <div class="match-item" draggable="true">Declining Innovation</div>
+                            </div>
+                            <div class="match-right">
+                                <div class="match-slot" data-answer="silos">Weak Communication</div>
+                                <div class="match-slot" data-answer="resistance">Rapid Growth</div>
+                                <div class="match-slot" data-answer="innovation">Increased Bureaucracy</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary next-btn" onclick="navigateToSection('intervention')">
+                        Next: Intervention Strategy →
+                    </button>
+                </section>
+
+                <!-- INTERVENTION SECTION -->
+                <section id="intervention" class="section">
+                    <div class="section-header">
+                        <h2>🎯 Intervention Strategy</h2>
+                        <p>Solutions Implemented</p>
+                    </div>
+
+                    <div class="intervention-timeline">
+                        <div class="timeline-item active" onclick="showIntervention(0)">
+                            <div class="timeline-marker">1</div>
+                            <h4>Agile Transformation</h4>
+                            <p>Implementing Spotify Model</p>
+                        </div>
+                        <div class="timeline-item" onclick="showIntervention(1)">
+                            <div class="timeline-marker">2</div>
+                            <h4>Cross-Functional Squads</h4>
+                            <p>Breaking Down Silos</p>
+                        </div>
+                        <div class="timeline-item" onclick="showIntervention(2)">
+                            <div class="timeline-marker">3</div>
+                            <h4>Leadership Development</h4>
+                            <p>Coaching & Alignment</p>
+                        </div>
+                        <div class="timeline-item" onclick="showIntervention(3)">
+                            <div class="timeline-marker">4</div>
+                            <h4>Culture Refresh</h4>
+                            <p>Values Realignment</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-details" id="interventionDetails">
+                        <div class="intervention-content active" id="intervention-0">
+                            <h3>🚀 Intervention 1: Agile Transformation</h3>
+                            <div class="intervention-card">
+                                <h4>The Spotify Model</h4>
+                                <p>Implemented the famous Spotify engineering culture model:</p>
+                                <ul>
+                                    <li><strong>Squads:</strong> Small, autonomous teams (6-12 people)</li>
+                                    <li><strong>Tribes:</strong> Grouping of squads (40-150 people)</li>
+                                    <li><strong>Chapters:</strong> Communities of people with same skills</li>
+                                    <li><strong>Guilds:</strong> Cross-tribal communities</li>
+                                </ul>
+                                <div class="interactive-card">
+                                    <h5>🎮 Click elements to learn more:</h5>
+                                    <div class="info-buttons">
+                                        <button onclick="showInfo('squad-info')" class="info-btn">Squads</button>
+                                        <button onclick="showInfo('tribe-info')" class="info-btn">Tribes</button>
+                                        <button onclick="showInfo('chapter-info')" class="info-btn">Chapters</button>
+                                        <button onclick="showInfo('guild-info')" class="info-btn">Guilds</button>
+                                    </div>
+                                    <div id="squad-info" class="info-content hidden">
+                                        <p>🏊 <strong>Squads:</strong> Autonomous units owning end-to-end features. Each squad has a product owner, tech lead, and engineers. They make decisions independently, enabling faster development and ownership.</p>
+                                    </div>
+                                    <div id="tribe-info" class="info-content hidden">
+                                        <p>👨‍👩‍👧‍👦 <strong>Tribes:</strong> Larger groups managing a specific product area. Tribes facilitate knowledge sharing and resource coordination between squads. Tribe lead ensures alignment with company strategy.</p>
+                                    </div>
+                                    <div id="chapter-info" class="info-content hidden">
+                                        <p>🎓 <strong>Chapters:</strong> Communities of practice organized by skill (e.g., all iOS developers across squads). They maintain technical standards and support career development.</p>
+                                    </div>
+                                    <div id="guild-info" class="info-content hidden">
+                                        <p>🌐 <strong>Guilds:</strong> Voluntary communities crossing tribal boundaries. Examples: Mobile Chapter, Performance Guild. They share knowledge and best practices across the organization.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="intervention-content" id="intervention-1">
+                            <h3>🤝 Intervention 2: Cross-Functional Squads</h3>
+                            <div class="intervention-card">
+                                <h4>Breaking Down Silos</h4>
+                                <p>Reorganized teams into cross-functional units:</p>
+                                <ul>
+                                    <li>Mixed skills: Product, Engineering, Design, Data</li>
+                                    <li>End-to-end ownership of features</li>
+                                    <li>Reduced handoffs and dependencies</li>
+                                    <li>Faster decision-making cycles</li>
+                                </ul>
+                                <div class="org-structure">
+                                    <div class="org-box cfo">
+                                        <p>👨‍💼 CFO</p>
+                                    </div>
+                                    <div class="org-lines"></div>
+                                    <div class="org-boxes">
+                                        <div class="org-box tribe">
+                                            <p>Tribe Lead</p>
+                                            <div class="sub-boxes">
+                                                <div class="org-box squad">Squad</div>
+                                                <div class="org-box squad">Squad</div>
+                                                <div class="org-box squad">Squad</div>
+                                            </div>
+                                        </div>
+                                        <div class="org-box tribe">
+                                            <p>Tribe Lead</p>
+                                            <div class="sub-boxes">
+                                                <div class="org-box squad">Squad</div>
+                                                <div class="org-box squad">Squad</div>
+                                                <div class="org-box squad">Squad</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="intervention-content" id="intervention-2">
+                            <h3>🎓 Intervention 3: Leadership Development</h3>
+                            <div class="intervention-card">
+                                <h4>Coaching & Alignment Program</h4>
+                                <p>Implemented a comprehensive leadership development program:</p>
+                                <ul>
+                                    <li>Executive coaching on change management</li>
+                                    <li>Regular alignment meetings (OKRs - Objectives & Key Results)</li>
+                                    <li>Transparent communication strategy</li>
+                                    <li>Decision-making frameworks workshop</li>
+                                </ul>
+                                <div class="coaching-elements">
+                                    <div class="coaching-card">
+                                        <h5>📋 OKR Framework</h5>
+                                        <p>Quarterly Objectives & Key Results ensuring alignment across all levels</p>
+                                    </div>
+                                    <div class="coaching-card">
+                                        <h5>🗣️ Communication Cadence</h5>
+                                        <p>Weekly all-hands, monthly town halls, transparent decision logs</p>
+                                    </div>
+                                    <div class="coaching-card">
+                                        <h5>👥 Peer Coaching</h5>
+                                        <p>Leaders coached leaders in peer groups to build capability</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="intervention-content" id="intervention-3">
+                            <h3>🎨 Intervention 4: Culture Refresh</h3>
+                            <div class="intervention-card">
+                                <h4>Values & Culture Realignment</h4>
+                                <p>Reinforced core values adapted for scale:</p>
+                                <ul>
+                                    <li>🎵 <strong>Music DNA:</strong> Keep passion for music & users central</li>
+                                    <li>🚀 <strong>Innovation:</strong> Encourage experimentation & learning from failure</li>
+                                    <li>👥 <strong>Collaboration:</strong> Break silos, share knowledge</li>
+                                    <li>📈 <strong>Impact:</strong> Focus on metrics & user outcomes</li>
+                                </ul>
+                                <div class="values-display">
+                                    <div class="value-item">
+                                        <span class="value-emoji">🎵</span>
+                                        <span>Music First</span>
+                                    </div>
+                                    <div class="value-item">
+                                        <span class="value-emoji">🚀</span>
+                                        <span>Bold Innovation</span>
+                                    </div>
+                                    <div class="value-item">
+                                        <span class="value-emoji">👥</span>
+                                        <span>Trust & Autonomy</span>
+                                    </div>
+                                    <div class="value-item">
+                                        <span class="value-emoji">📊</span>
+                                        <span>Data Driven</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary next-btn" onclick="navigateToSection('evaluation')">
+                        Next: Evaluation & Results →
+                    </button>
+                </section>
+
+                <!-- EVALUATION SECTION -->
+                <section id="evaluation" class="section">
+                    <div class="section-header">
+                        <h2>📊 Evaluation & Effect</h2>
+                        <p>Impact & Results</p>
+                    </div>
+
+                    <div class="tabs">
+                        <button class="tab-btn active" onclick="switchTab(0)">📈 Metrics</button>
+                        <button class="tab-btn" onclick="switchTab(1)">💡 Insights</button>
+                        <button class="tab-btn" onclick="switchTab(2)">🎯 Success Stories</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab active" id="tab-0">
+                            <h3>Key Performance Indicators</h3>
+                            <div class="metrics-grid">
+                                <div class="metric-card" onclick="expandMetric(this)">
+                                    <div class="metric-chart">
+                                        <canvas id="engagement-chart"></canvas>
+                                    </div>
+                                    <h4>Employee Engagement</h4>
+                                    <div class="metric-value">+42%</div>
+                                    <p>Before: 62% → After: 88%</p>
+                                </div>
+
+                                <div class="metric-card" onclick="expandMetric(this)">
+                                    <div class="metric-chart">
+                                        <canvas id="retention-chart"></canvas>
+                                    </div>
+                                    <h4>Employee Retention</h4>
+                                    <div class="metric-value">-8%</div>
+                                    <p>Turnover reduced from 18% to 10%</p>
+                                </div>
+
+                                <div class="metric-card" onclick="expandMetric(this)">
+                                    <div class="metric-chart">
+                                        <canvas id="velocity-chart"></canvas>
+                                    </div>
+                                    <h4>Project Velocity</h4>
+                                    <div class="metric-value">+35%</div>
+                                    <p>Feature delivery increased 35%</p>
+                                </div>
+
+                                <div class="metric-card" onclick="expandMetric(this)">
+                                    <div class="metric-chart">
+                                        <canvas id="collab-chart"></canvas>
+                                    </div>
+                                    <h4>Cross-Team Collaboration</h4>
+                                    <div class="metric-value">+52%</div>
+                                    <p>Inter-squad collaboration grew significantly</p>
+                                </div>
+                            </div>
+
+                            <div class="before-after-comparison">
+                                <h3>Before & After Snapshot</h3>
+                                <table class="comparison-table">
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Before</th>
+                                        <th>After</th>
+                                        <th>Change</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Avg Project Duration</td>
+                                        <td>12 weeks</td>
+                                        <td>8 weeks</td>
+                                        <td>↓ -33%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employee Satisfaction</td>
+                                        <td>62%</td>
+                                        <td>88%</td>
+                                        <td>↑ +42%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Features Released/Quarter</td>
+                                        <td>15</td>
+                                        <td>20</td>
+                                        <td>↑ +33%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cross-functional Score</td>
+                                        <td>3.2/10</td>
+                                        <td>6.8/10</td>
+                                        <td>↑ +113%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Annual Turnover</td>
+                                        <td>18%</td>
+                                        <td>10%</td>
+                                        <td>↓ -56%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Time to Decision</td>
+                                        <td>14 days</td>
+                                        <td>5 days</td>
+                                        <td>↓ -64%</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="tab" id="tab-1">
+                            <h3>Key Insights & Learnings</h3>
+                            <div class="insights-cards">
+                                <div class="insight-card">
+                                    <span class="insight-number">1</span>
+                                    <h4>Autonomy Drives Engagement</h4>
+                                    <p>Squads with clear ownership and autonomy showed 45% higher engagement. Empowerment > micromanagement.</p>
+                                </div>
+
+                                <div class="insight-card">
+                                    <span class="insight-number">2</span>
+                                    <h4>Communication is Everything</h4>
+                                    <p>Regular, transparent communication reduced anxiety by 60% and improved alignment across teams.</p>
+                                </div>
+
+                                <div class="insight-card">
+                                    <span class="insight-number">3</span>
+                                    <h4>Structure Enables Speed</h4>
+                                    <p>Clear organizational structure paradoxically increased agility. Roles & responsibilities clarity = faster decisions.</p>
+                                </div>
+
+                                <div class="insight-card">
+                                    <span class="insight-number">4</span>
+                                    <h4>Culture Sticks Through Action</h4>
+                                    <p>Values became real when leaders modeled them. Consistent behaviors > posters on walls.</p>
+                                </div>
+
+                                <div class="insight-card">
+                                    <span class="insight-number">5</span>
+                                    <h4>Continuous Learning Required</h4>
+                                    <p>OD is ongoing, not a one-time fix. Quarterly reviews & adjustments were essential for sustainability.</p>
+                                </div>
+
+                                <div class="insight-card">
+                                    <span class="insight-number">6</span>
+                                    <h4>Data Validates Change</h4>
+                                    <p>Metrics showing progress convinced skeptics. Measure everything, share results transparently.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab" id="tab-2">
+                            <h3>🌟 Success Stories</h3>
+                            <div class="stories-grid">
+                                <div class="story-card">
+                                    <div class="story-avatar">🎵</div>
+                                    <h4>Product Launch Squad</h4>
+                                    <p><strong>Challenge:</strong> Launch took 6 months with coordination issues.</p>
+                                    <p><strong>After:</strong> Same feature launched in 6 weeks with better results. Squad autonomy enabled rapid iteration.</p>
+                                    <p><strong>Impact:</strong> +500K new users, 35% engagement increase</p>
+                                </div>
+
+                                <div class="story-card">
+                                    <div class="story-avatar">🚀</div>
+                                    <h4>Data Engineering Tribe</h4>
+                                    <p><strong>Challenge:</strong> Data insights took weeks to generate, slowing decisions.</p>
+                                    <p><strong>After:</strong> Chapter formation enabled knowledge sharing. Real-time analytics implemented.</p>
+                                    <p><strong>Impact:</strong> Decision speed 10x faster, data quality improved 40%</p>
+                                </div>
+
+                                <div class="story-card">
+                                    <div class="story-avatar">👥</div>
+                                    <h4>Stockholm & SF Team Collaboration</h4>
+                                    <p><strong>Challenge:</strong> Two offices operated as separate companies.</p>
+                                    <p><strong>After:</strong> Guild initiatives created cross-location collaboration.</p>
+                                    <p><strong>Impact:</strong> Feature parity achieved, shared innovation pipeline</p>
+                                </div>
+
+                                <div class="story-card">
+                                    <div class="story-avatar">🏆</div>
+                                    <h4>New Employee Experience</h4>
+                                    <p><strong>Challenge:</strong> Onboarding was chaotic, new hires felt lost.</p>
+                                    <p><strong>After:</strong> Clear structure & mentorship through chapters.</p>
+                                    <p><strong>Impact:</strong> Time to productivity reduced from 3 months to 4 weeks</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary next-btn" onclick="navigateToSection('theory')">
+                        Next: Learning & Theory →
+                    </button>
+                </section>
+
+                <!-- THEORY & LEARNING SECTION -->
+                <section id="theory" class="section">
+                    <div class="section-header">
+                        <h2>📚 Learning & Theory Link</h2>
+                        <p>Organization Development Framework</p>
+                    </div>
+
+                    <div class="theory-navigation">
+                        <button class="theory-tab active" onclick="switchTheoryTab(0)">🔍 OD Overview</button>
+                        <button class="theory-tab" onclick="switchTheoryTab(1)">📖 Key Models</button>
+                        <button class="theory-tab" onclick="switchTheoryTab(2)">🎯 Application</button>
+                        <button class="theory-tab" onclick="switchTheoryTab(3)">🧠 Reflection</button>
+                    </div>
+
+                    <div class="theory-content">
+                        <div class="theory-section active" id="theory-0">
+                            <h3>What is Organizational Development?</h3>
+                            <div class="od-definition">
+                                <blockquote>
+                                    "Organization Development is the application of behavioral science knowledge to enhance organizational effectiveness. It is a system-wide effort to increase organizational effectiveness and health through planned interventions in organizational processes using behavioral science knowledge."
+                                </blockquote>
+                                <p>— W.G. Bennis & E.H. Schein, pioneers of OD</p>
+                            </div>
+
+                            <div class="od-principles">
+                                <h4>Core OD Principles:</h4>
+                                <div class="principles-grid">
+                                    <div class="principle">
+                                        <h5>1. Systemic Perspective</h5>
+                                        <p>Changes in one part affect the whole organization. Must view org as interconnected system.</p>
+                                    </div>
+                                    <div class="principle">
+                                        <h5>2. Humanistic Values</h5>
+                                        <p>Respect for people, trust, and development. People are the greatest resource.</p>
+                                    </div>
+                                    <div class="principle">
+                                        <h5>3. Collaborative Change</h5>
+                                        <p>Those affected should participate in designing solutions. Collaboration > imposition.</p>
+                                    </div>
+                                    <div class="principle">
+                                        <h5>4. Data-Driven Decisions</h5>
+                                        <p>Use surveys, metrics, and feedback to diagnose problems and measure success.</p>
+                                    </div>
+                                    <div class="principle">
+                                        <h5>5. Continuous Improvement</h5>
+                                        <p>OD is an ongoing process, not a one-time event. Adapt as organization evolves.</p>
+                                    </div>
+                                    <div class="principle">
+                                        <h5>6. Ethical Practice</h5>
+                                        <p>Transparency, informed choice, and respect for autonomy are paramount.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-1">
+                            <h3>Key OD Models & Frameworks</h3>
+                            
+                            <div class="model-card expandable" onclick="toggleModel(this)">
+                                <h4>🔄 Lewin's Change Model</h4>
+                                <div class="model-content hidden">
+                                    <p><strong>Kurt Lewin</strong> (1947) proposed the 3-stage model:</p>
+                                    <ul>
+                                        <li><strong>Unfreeze:</strong> Create awareness of need for change (broke silos mentality)</li>
+                                        <li><strong>Change:</strong> Introduce new behavior/structure (implemented squads/tribes)</li>
+                                        <li><strong>Refreeze:</strong> Stabilize new state (culture reinforcement, measurement)</li>
+                                    </ul>
+                                    <p><strong>How Spotify applied it:</strong> Communication about problems (unfreeze) → Squad implementation (change) → Culture reinforcement (refreeze)</p>
+                                </div>
+                            </div>
+
+                            <div class="model-card expandable" onclick="toggleModel(this)">
+                                <h4>💡 Kotter's 8-Step Change Model</h4>
+                                <div class="model-content hidden">
+                                    <p><strong>John Kotter</strong> (1996) outlined 8 critical steps:</p>
+                                    <ol>
+                                        <li>Establish sense of urgency → Shared data on problems</li>
+                                        <li>Build guiding coalition → Leadership alignment team</li>
+                                        <li>Form strategic vision → Clear OKRs & future state</li>
+                                        <li>Communicate vision → All-hands, town halls</li>
+                                        <li>Empower action → Squad autonomy & decision rights</li>
+                                        <li>Create short-term wins → Celebrate early successes</li>
+                                        <li>Consolidate gains → Ongoing coaching & reinforcement</li>
+                                        <li>Anchor in culture → Values integration</li>
+                                    </ol>
+                                </div>
+                            </div>
+
+                            <div class="model-card expandable" onclick="toggleModel(this)">
+                                <h4>📊 Burke-Litwin Model</h4>
+                                <div class="model-content hidden">
+                                    <p><strong>Burke & Litwin</strong> (1992) identify 12 dimensions affecting organizational performance:</p>
+                                    <div class="bl-dimensions">
+                                        <div class="dimension">External Environment</div>
+                                        <div class="dimension">Leadership</div>
+                                        <div class="dimension">Structure</div>
+                                        <div class="dimension">Culture</div>
+                                        <div class="dimension">Strategy</div>
+                                        <div class="dimension">Systems & Practices</div>
+                                        <div class="dimension">Individual Skills</div>
+                                        <div class="dimension">Motivation</div>
+                                        <div class="dimension">Individual Needs</div>
+                                        <div class="dimension">Team Dynamics</div>
+                                    </div>
+                                    <p>Spotify intervention touched all dimensions: Leadership coaching, Structure (squads), Culture (values), Systems (OKRs).</p>
+                                </div>
+                            </div>
+
+                            <div class="model-card expandable" onclick="toggleModel(this)">
+                                <h4>🎯 Organizational Readiness Model</h4>
+                                <div class="model-content hidden">
+                                    <p><strong>Assesses organization's ability to change:</strong></p>
+                                    <ul>
+                                        <li>Awareness of need → Demonstrated through data</li>
+                                        <li>Resources available → Budget, time, expertise</li>
+                                        <li>Leadership commitment → CEO & execs aligned</li>
+                                        <li>Staff competence → Capability to implement</li>
+                                        <li>Organizational climate → Receptiveness to change</li>
+                                    </ul>
+                                    <p>Spotify had most factors ready; intervention focused on building commitment & awareness.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-2">
+                            <h3>Application to Spotify Case</h3>
+                            <div class="application-matrix">
+                                <table class="application-table">
+                                    <tr>
+                                        <th>OD Concept</th>
+                                        <th>Spotify Context</th>
+                                        <th>How Applied</th>
+                                        <th>Result</th>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Diagnosis</strong></td>
+                                        <td>Silos, declining engagement</td>
+                                        <td>Employee surveys, focus groups, metrics analysis</td>
+                                        <td>Clear problem identification</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Stakeholder Engagement</strong></td>
+                                        <td>Employees resistant to change</td>
+                                        <td>Involve teams in designing squads, ask for feedback</td>
+                                        <td>Ownership & buy-in increased</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Structural Change</strong></td>
+                                        <td>Functional silos limiting agility</td>
+                                        <td>Implemented squads/tribes model</td>
+                                        <td>Speed & cross-functional collaboration improved</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Leadership Alignment</strong></td>
+                                        <td>Leaders had conflicting visions</td>
+                                        <td>Coaching, OKR alignment, regular sync</td>
+                                        <td>Unified direction & fast decisions</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Culture Reinforcement</strong></td>
+                                        <td>Old startup culture misaligned with scale</td>
+                                        <td>Values refresh, role modeling, storytelling</td>
+                                        <td>Culture adapted to new reality while retaining essence</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Measurement</strong></td>
+                                        <td>Need to prove change works</td>
+                                        <td>Track engagement, retention, velocity, collaboration</td>
+                                        <td>Data validated success, sustained effort</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <h4>The OD Cycle in Action:</h4>
+                            <div class="od-cycle">
+                                <div class="cycle-step">
+                                    <span class="cycle-num">1</span>
+                                    <p>Diagnosis → Identified silos & engagement issues</p>
+                                </div>
+                                <div class="cycle-arrow">→</div>
+                                <div class="cycle-step">
+                                    <span class="cycle-num">2</span>
+                                    <p>Design → Created squad/tribe intervention</p>
+                                </div>
+                                <div class="cycle-arrow">→</div>
+                                <div class="cycle-step">
+                                    <span class="cycle-num">3</span>
+                                    <p>Implementation → Rolled out squads, coaching</p>
+                                </div>
+                                <div class="cycle-arrow">→</div>
+                                <div class="cycle-step">
+                                    <span class="cycle-num">4</span>
+                                    <p>Evaluation → Measured engagement, velocity</p>
+                                </div>
+                                <div class="cycle-arrow">→</div>
+                                <div class="cycle-step">
+                                    <span class="cycle-num">5</span>
+                                    <p>Refinement → Adjusted based on learnings</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="theory-section" id="theory-3">
+                            <h3>🧠 Personal Reflection & Learning</h3>
+                            <div class="reflection-content">
+                                <h4>Key Takeaways:</h4>
+                                <div class="takeaway-cards">
+                                    <div class="takeaway">
+                                        <h5>1. Complexity of Organizational Change</h5>
+                                        <p>Real change isn't just about structure; it involves culture, leadership, systems, and individual mindsets. Spotify's success came from addressing multiple dimensions simultaneously.</p>
+                                    </div>
+
+                                    <div class="takeaway">
+                                        <h5>2. People are Central to OD</h5>
+                                        <p>All OD interventions ultimately aim at human development and wellbeing. Metrics matter, but employee engagement and satisfaction are the true measures of success.</p>
+                                    </div>
+
+                                    <div class="takeaway">
+                                        <h5>3. Communication Overcomes Resistance</h5>
+                                        <p>Transparency about problems, plans, and progress reduces anxiety and builds trust. Regular communication was perhaps the single most important factor in Spotify's success.</p>
+                                    </div>
+
+                                    <div class="takeaway">
+                                        <h5>4. Autonomy Unleashes Potential</h5>
+                                        <p>When given clear direction but allowed autonomy in execution, teams are far more engaged and productive. Micromanagement stifles both innovation and morale.</p>
+                                    </div>
+
+                                    <div class="takeaway">
+                                        <h5>5. Data Validates Experience</h5>
+                                        <p>It's important to trust anecdotes and informal feedback, but metrics provide objective evidence of progress. This sustains effort through difficult change phases.</p>
+                                    </div>
+
+                                    <div class="takeaway">
+                                        <h5>6. OD is Never "Done"</h5>
+                                        <p>Organizational development is continuous, not a destination. As Spotify continues to grow and adapt, new challenges emerge requiring ongoing OD attention.</p>
+                                    </div>
+                                </div>
+
+                                <h4>Theoretical Implications:</h4>
+                                <div class="theory-implications">
+                                    <div class="implication">
+                                        <strong>Systems Thinking Validated:</strong> Spotify's case confirms that organizations are complex systems where changing one part (structure) requires attention to multiple other parts (culture, leadership, systems).
+                                    </div>
+                                    <div class="implication">
+                                        <strong>Contingency Approach Matters:</strong> No single OD model works universally. Spotify applied elements of Lewin, Kotter, Burke-Litwin adapted to their specific context and challenges.
+                                    </div>
+                                    <div class="implication">
+                                        <strong>Humanistic Values Drive Results:</strong> Respect for people, autonomy, and transparency aren't just nice-to-have; they correlate directly with business metrics like engagement, retention, and velocity.
+                                    </div>
+                                </div>
+
+                                <h4>Questions for Further Reflection:</h4>
+                                <div class="reflection-questions">
+                                    <p>❓ How would Spotify's intervention need to adapt as it continues to scale beyond 10,000+ employees?</p>
+                                    <p>❓ What other OD models might have been relevant (e.g., Appreciative Inquiry, Organizational Justice)?</p>
+                                    <p>❓ How can Spotify maintain its culture and agility as it becomes a mature, multinational corporation?</p>
+                                    <p>❓ What unforeseen challenges or side effects of the squad model might emerge long-term?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary next-btn" onclick="completePresentationQuiz()">
+                        🏆 Complete & Take Final Quiz
+                    </button>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Final Quiz Modal -->
+    <div id="quizModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2>🎮 Final Presentation Quiz</h2>
+            <div id="quizContent"></div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="submitQuiz()">Submit & Get Score</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
